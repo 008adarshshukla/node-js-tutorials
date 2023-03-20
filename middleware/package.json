@@ -1,0 +1,19 @@
+{
+  "name": "middleware",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --watch server.js",
+    "dev": "node server.js"
+  },
+  "author": "Adarsh",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "date-fns": "^2.29.3",
+    "express": "^4.18.2",
+    "uuid": "^9.0.0"
+  }
+}
