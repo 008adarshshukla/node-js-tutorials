@@ -1,10 +1,27 @@
 const express = require("express")
 const app = express()
+const bodyPraser = require('body-parser')
+
+//parsing url encoded bodies. extendted: true allows to parse extended bodies with rich data in it.
+app.use(bodyPraser.urlencoded({extended: false}))
+//parsing json.
+app.use(bodyPraser.json())
 
 //products related routes.
 const porductRoutes = require('./api/routes/products')
 //orders related routes.
 const ordersRoutes = require('./api/routes/orders')
+
+//hnadling CORS error
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", '*')
+    res.header("Access-Control-Allow-Origin","Origin, X-Requested-With, Content-Type, Accept, Authorization")
+
+    if(req.method === 'OPTIONS') {
+        res.header("Access-Control-Allow-Origin", 'PUT, POST, PATCH, DELETE, GET')
+        return res.status(200).json({})
+    }
+})
 
 //prividing routes for http://localhost/products
 app.use('/products', porductRoutes)

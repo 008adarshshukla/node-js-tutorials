@@ -10,8 +10,13 @@ router.get('/',(req, res, next) => {
 
 //post request at http://localhost/products
 router.post('/',(req, res, next) => {
+    const product = {
+        name: req.body.name,
+        price: req.body.price
+    }
     res.status(200).json({
-        message: "Handling post request to /products"
+        message: "Handling post request to /products",
+        createdProduct: product
     })
 })
 
