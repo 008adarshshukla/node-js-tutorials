@@ -56,7 +56,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 //server the static files.
-//his is a built-in middleware function in Express. It serves static files and is based on serve-static.
+//it is a built-in middleware function in Express. It serves static files and is based on serve-static.
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.get("^/$|index(.html)?", (req, res) => {
