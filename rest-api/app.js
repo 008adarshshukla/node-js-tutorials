@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 const bodyPraser = require('body-parser')
+const mongoose = require('mongoose')
 
 //parsing url encoded bodies. extendted: true allows to parse extended bodies with rich data in it.
 app.use(bodyPraser.urlencoded({extended: false}))
@@ -11,6 +12,11 @@ app.use(bodyPraser.json())
 const porductRoutes = require('./api/routes/products')
 //orders related routes.
 const ordersRoutes = require('./api/routes/orders')
+
+mongoose.connect(
+  "mongodb+srv://shuklaadarsh1932:" + process.env.MONGO_ATLAS_PW + "@cluster0.bsked4t.mongodb.net/?retryWrites=true&w=majority",{
+    useMongoClient: true
+  })
 
 //hnadling CORS error
 app.use((req, res, next) => {
