@@ -2,10 +2,20 @@ const express = require("express")
 const router = express.Router()
 
 //get request at http://localhost/orders
-router.get('/',(req, res, next) => {
+console.log("3");
+router.get('/',(req, res) => {
+    console.log("entered");
+    try{
     res.status(200).json({
         message: "Orders were fetched."
+    });
+}
+catch(e)
+{
+    res.status(400).send({
+        e
     })
+}
 })
 
 //post request at http://localhost/orders
