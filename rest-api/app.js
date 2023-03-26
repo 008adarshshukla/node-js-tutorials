@@ -3,7 +3,7 @@ const app = express()
 const bodyPraser = require("body-parser")
 const mongoose = require("mongoose")
 require("dotenv").config()
-const cors=require('cors');
+const cors = require("cors")
 //parsing url encoded bodies. extendted: true allows to parse extended bodies with rich data in it.
 app.use(bodyPraser.urlencoded({ extended: false }))
 //parsing json.
@@ -15,14 +15,18 @@ const porductRoutes = require("./api/routes/products")
 //orders related routes.
 const ordersRoutes = require("./api/routes/orders")
 
-console.log(process.env.MONGO_ATLAS_PW);
+console.log(process.env.MONGO_ATLAS_PW)
 mongoose
   .connect(
-    "mongodb+srv://adarsh:" + process.env.MONGO_ATLAS_PW + "@cluster0.bsked4t.mongodb.net/firstdb?retryWrites=true&w=majority"
+    "mongodb+srv://adarsh:" +
+      process.env.MONGO_ATLAS_PW +
+      "@cluster0.bsked4t.mongodb.net/firstdb?retryWrites=true&w=majority"
   )
   .then(() => {
     console.log("success")
   })
+
+mongoose.Promise = global.Promise
 
 //prividing routes for http://localhost/products
 app.use("/products", porductRoutes)
